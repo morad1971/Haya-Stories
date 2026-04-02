@@ -19,15 +19,11 @@
         h1, h2, h3 { font-family: 'Amiri', serif !important; }
         body { background-color: var(--soft-white); color: #333; padding-top: 80px; }
         
-        /* شريط التنقل العلوي */
         .nav-glass {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
+            position: fixed; top: 0; width: 100%; z-index: 1000;
         }
 
         .story-card {
@@ -36,10 +32,39 @@
             overflow: hidden;
             transition: all 0.4s ease;
             border: 1px solid #f0f0f0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         .story-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
 
-        .gradient-overlay { background: linear-gradient(to top, rgba(27, 77, 62, 0.8), transparent); }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 177.77%; /* نسبة الـ Reels الطولية */
+            background: #000;
+        }
+        .video-container video {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
+        .gradient-overlay { background: linear-gradient(to top, rgba(27, 77, 62, 0.9), transparent); }
+        
+        .featured-badge {
+            background: var(--gold);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: bold;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 20;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
@@ -51,81 +76,87 @@
                 <span>الرئيسية</span>
             </a>
             <div class="flex gap-4">
-                <a href="https://morad1971.github.io/Haya-product-catalog/" class="text-sm font-medium hover:text-gold transition-colors">الكتالوج</a>
-                <a href="https://morad1971.github.io/Haya-Comparison/" class="text-sm font-medium hover:text-gold transition-colors">المقارنة</a>
                 <a href="https://morad1971.github.io/Haya-Register/" class="bg-gold text-white px-4 py-2 rounded-xl text-xs font-bold shadow-md">انضمي الآن</a>
             </div>
         </div>
     </nav>
 
     <header class="py-12 px-6 text-center">
-        <div class="max-w-2xl mx-auto">
-            <h1 class="text-4xl font-bold text-dxn-green mb-4 italic">قصص كتبت بطموح وإرادة</h1>
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold text-dxn-green mb-4 italic">حكايات طموح وشريكات نجاح</h1>
             <p class="text-gray-500 text-sm md:text-base leading-relaxed">
-                سيدات حوّلن استهلاكهن اليومي إلى مشاريع ريادية ناجحة مع فريق هيا.
+                من الاستهلاك الصحي إلى الريادة العالمية.. قصص ملهمة لسيدات فريق هيا.
             </p>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <main class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
         
+        <div class="story-card border-2 border-gold/20 md:col-span-1">
+            <div class="video-container">
+                <span class="featured-badge flex items-center gap-1">
+                    <i data-lucide="sparkles" class="w-3 h-3"></i>
+                    قصة نغم الملهمة
+                </span>
+                <video controls preload="metadata">
+                    <source src="icons/Nagham.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+                <div class="absolute bottom-0 inset-x-0 p-6 gradient-overlay pointer-events-none">
+                    <div class="flex items-center gap-2 text-white mb-1">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-gold"></i>
+                        <span class="font-bold text-lg">نغم - لبنان</span>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6 flex-grow">
+                <p class="text-gray-700 text-sm leading-relaxed italic mb-6">
+                    "لم أبدأ من أجل مشروع، بل من أجل صحتي.. واليوم تحول الاستهلاك إلى رسالة، والرسالة إلى مشروع ريادي يمنحني المساحة لأتعلم، أتطور، وأسافر."
+                </p>
+                <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-50">
+                    <span class="text-[10px] font-black text-gold uppercase tracking-tighter">قائدة فريق - ماسي</span>
+                    <i data-lucide="play-circle" class="w-5 h-5 text-gold/50"></i>
+                </div>
+            </div>
+        </div>
+
         <div class="story-card">
-            <div class="relative h-56 overflow-hidden">
+            <div class="relative h-72 overflow-hidden">
                 <img src="images/health.png" class="w-full h-full object-cover" alt="Story">
-                <div class="absolute inset-0 gradient-overlay flex items-end p-5">
-                    <span class="text-white font-bold">أم سارة - الأردن</span>
+                <div class="absolute inset-0 gradient-overlay flex items-end p-5 text-white">
+                    <span class="font-bold">أم سارة - الأردن</span>
                 </div>
             </div>
             <div class="p-6">
-                <p class="text-gray-600 text-sm leading-relaxed italic mb-4">"تغيرت صحتي وميزانيتي معاً، واليوم أجني أرباحاً شهرية وأنا في منزلي."</p>
-                <span class="text-[10px] font-black text-gold uppercase tracking-widest">عميل مؤهل</span>
+                <p class="text-gray-600 text-sm leading-relaxed italic mb-4">"وجدت التوازن بين الاهتمام ببيتي وبين تحقيق دخل شهري متنامٍ بفضل نظام DXN الذكي."</p>
+                <span class="text-[10px] font-black text-gray-400">نجمة ياقوتية</span>
             </div>
         </div>
 
         <div class="story-card">
-            <div class="relative h-56 overflow-hidden">
-                <img src="images/value.png" class="w-full h-full object-cover" alt="Story">
-                <div class="absolute inset-0 gradient-overlay flex items-end p-5">
-                    <span class="text-white font-bold">ليلى م. - السعودية</span>
-                </div>
-            </div>
-            <div class="p-6">
-                <p class="text-gray-600 text-sm leading-relaxed italic mb-4">"بدأت بميزانية بسيطة، واليوم أدير فريقاً من 20 سيدة طموحة."</p>
-                <span class="text-[10px] font-black text-gold uppercase tracking-widest">رتبة ياقوتي</span>
-            </div>
-        </div>
-
-        <div class="story-card">
-            <div class="relative h-56 overflow-hidden">
+            <div class="relative h-72 overflow-hidden">
                 <img src="images/project.png" class="w-full h-full object-cover" alt="Story">
-                <div class="absolute inset-0 gradient-overlay flex items-end p-5">
-                    <span class="text-white font-bold">نورا ع. - الإمارات</span>
+                <div class="absolute inset-0 gradient-overlay flex items-end p-5 text-white">
+                    <span class="font-bold">ليلى م. - السعودية</span>
                 </div>
             </div>
             <div class="p-6">
-                <p class="text-gray-600 text-sm leading-relaxed italic mb-4">"وجدت في هذا النظام الأمان المالي الذي كنت أبحث عنه لعائلتي."</p>
-                <span class="text-[10px] font-black text-gold uppercase tracking-widest">رتبة ماسي</span>
+                <p class="text-gray-600 text-sm leading-relaxed italic mb-4">"كنت أبحث عن مشروع لا يحتاج رأس مال كبير، ووجدت في فريق هيا الدعم والتدريب الذي أوصلني للنجاح."</p>
+                <span class="text-[10px] font-black text-gray-400">وكيل نجم</span>
             </div>
         </div>
 
     </main>
 
-    <section class="mt-20 border-t border-gray-100 py-12 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h3 class="text-2xl font-bold text-dxn-green mb-8">هل أنتِ مستعدة لتكوني قصتنا التالية؟</h3>
+    <section class="bg-dxn-green text-white py-16 px-6 text-center rounded-t-[60px] shadow-inner">
+        <div class="max-w-2xl mx-auto">
+            <h3 class="text-3xl font-bold mb-6 italic text-gold">ابدئي كتابة قصتكِ معنا</h3>
+            <p class="opacity-80 mb-10 text-sm leading-relaxed">انضمي لأكثر من 500 سيدة عربية حققن حلم الاستقلال المالي والصحي.</p>
             
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://morad1971.github.io/Haya-Budget/" class="flex items-center gap-2 bg-white border border-gray-200 px-6 py-3 rounded-2xl text-sm font-bold hover:bg-gray-50 transition-all shadow-sm">
-                    <i data-lucide="calculator" class="w-4 h-4 text-gold"></i>
-                    احسبي أرباحك
-                </a>
-                <a href="https://morad1971.github.io/Haya-Register/" class="flex items-center gap-2 bg-dxn-green text-white px-8 py-3 rounded-2xl text-sm font-bold hover:shadow-lg transition-all">
-                    <i data-lucide="user-plus" class="w-4 h-4 text-gold"></i>
-                    سجلي عضويتك
-                </a>
-                <a href="https://morad1971.github.io/Haya-Comparison/" class="flex items-center gap-2 bg-white border border-gray-200 px-6 py-3 rounded-2xl text-sm font-bold hover:bg-gray-50 transition-all shadow-sm">
-                    <i data-lucide="arrow-left-right" class="w-4 h-4 text-gold"></i>
-                    قارني النتائج
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://morad1971.github.io/Haya-Register/" class="bg-gold text-white px-10 py-4 rounded-2xl font-bold hover:shadow-2xl transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="user-plus"></i>
+                    سجلي عضويتك المجانية
                 </a>
             </div>
         </div>
