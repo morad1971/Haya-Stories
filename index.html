@@ -17,13 +17,13 @@
         }
         * { font-family: 'Vazirmatn', sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
         h1, h2, h3 { font-family: 'Amiri', serif !important; }
-        body { background-color: var(--soft-white); color: #333; padding-top: 80px; }
+        body { background-color: var(--soft-white); color: #333; padding-top: 70px; padding-bottom: 90px; }
         
         .nav-glass {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
             position: fixed; top: 0; width: 100%; z-index: 1000;
+            border-bottom: 1px solid #eee;
         }
 
         .story-card {
@@ -32,135 +32,111 @@
             overflow: hidden;
             transition: all 0.4s ease;
             border: 1px solid #f0f0f0;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+            display: flex; flex-direction: column;
         }
         .story-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
 
         .video-container {
-            position: relative;
-            width: 100%;
-            padding-top: 177.77%; /* نسبة الـ Reels الطولية */
-            background: #000;
+            position: relative; width: 100%; padding-top: 177.77%; background: #000;
         }
         .video-container video {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
         }
 
-        .gradient-overlay { background: linear-gradient(to top, rgba(27, 77, 62, 0.9), transparent); }
-        
-        .featured-badge {
-            background: var(--gold);
-            color: white;
-            padding: 6px 15px;
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: bold;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 20;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        .bottom-nav {
+            background: rgba(27, 77, 62, 0.98);
+            backdrop-filter: blur(15px);
+            position: fixed; bottom: 20px; left: 50%;
+            transform: translateX(-50%);
+            width: 90%; max-width: 450px;
+            border-radius: 25px;
+            display: flex; justify-content: space-around;
+            padding: 12px; z-index: 2000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
+
+        .nav-item { color: rgba(255,255,255,0.6); display: flex; flex-direction: column; align-items: center; font-size: 10px; gap: 4px; }
+        .nav-item.active { color: var(--gold); }
+        
+        .gradient-overlay { background: linear-gradient(to top, rgba(27, 77, 62, 0.9), transparent); }
     </style>
 </head>
 <body>
 
-    <nav class="nav-glass py-4 px-6">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="https://morad1971.github.io/Haya-DXN/" class="flex items-center gap-2 text-dxn-green font-bold">
-                <i data-lucide="home" class="w-5 h-5"></i>
-                <span>الرئيسية</span>
-            </a>
-            <div class="flex gap-4">
-                <a href="https://morad1971.github.io/Haya-Register/" class="bg-gold text-white px-4 py-2 rounded-xl text-xs font-bold shadow-md">انضمي الآن</a>
-            </div>
-        </div>
+    <nav class="nav-glass py-4 px-6 flex justify-between items-center">
+        <a href="https://morad1971.github.io/Haya-DXN/" class="flex items-center gap-2 text-dxn-green font-bold">
+            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            <span>الرئيسية</span>
+        </a>
+        <span class="text-xs font-bold text-gold italic">فريق هيا اسكندراني</span>
     </nav>
 
-    <header class="py-12 px-6 text-center">
-        <div class="max-w-3xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-bold text-dxn-green mb-4 italic">حكايات طموح وشريكات نجاح</h1>
-            <p class="text-gray-500 text-sm md:text-base leading-relaxed">
-                من الاستهلاك الصحي إلى الريادة العالمية.. قصص ملهمة لسيدات فريق هيا.
-            </p>
-        </div>
+    <header class="py-10 px-6 text-center">
+        <h1 class="text-4xl font-bold text-dxn-green mb-3 italic">قصص كتبت بطموح</h1>
+        <p class="text-gray-500 text-sm max-w-md mx-auto leading-relaxed">سيدات حوّلن الاستهلاك اليومي إلى مشاريع ريادية ناجحة</p>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+    <main class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <div class="story-card border-2 border-gold/20 md:col-span-1">
-            <div class="video-container">
-                <span class="featured-badge flex items-center gap-1">
-                    <i data-lucide="sparkles" class="w-3 h-3"></i>
-                    قصة نغم الملهمة
-                </span>
+        <div class="story-card border-2 border-gold/20">
+            <div class="video-container relative">
                 <video controls preload="metadata">
                     <source src="icons/Nagham.mp4" type="video/mp4">
-                    متصفحك لا يدعم تشغيل الفيديو.
                 </video>
-                <div class="absolute bottom-0 inset-x-0 p-6 gradient-overlay pointer-events-none">
-                    <div class="flex items-center gap-2 text-white mb-1">
-                        <i data-lucide="map-pin" class="w-4 h-4 text-gold"></i>
-                        <span class="font-bold text-lg">نغم - لبنان</span>
-                    </div>
+                <div class="absolute bottom-0 inset-x-0 p-5 gradient-overlay">
+                    <span class="text-white font-bold block italic">نغم - لبنان</span>
+                    <span class="text-[10px] text-gold font-bold">رحلة من الصحة إلى الريادة</span>
                 </div>
             </div>
-            <div class="p-6 flex-grow">
-                <p class="text-gray-700 text-sm leading-relaxed italic mb-6">
-                    "لم أبدأ من أجل مشروع، بل من أجل صحتي.. واليوم تحول الاستهلاك إلى رسالة، والرسالة إلى مشروع ريادي يمنحني المساحة لأتعلم، أتطور، وأسافر."
-                </p>
-                <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-50">
-                    <span class="text-[10px] font-black text-gold uppercase tracking-tighter">قائدة فريق - ماسي</span>
-                    <i data-lucide="play-circle" class="w-5 h-5 text-gold/50"></i>
+            <div class="p-6">
+                <p class="text-gray-600 text-sm leading-relaxed italic mb-4">"مشروع دكسن منحني المساحة لأتعلم وأتطور وأكبر.. شاهدوا كيف تحول الاستهلاك لرسالة."</p>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="award" class="w-4 h-4 text-gold"></i>
+                    <span class="text-[10px] font-black text-gray-400 uppercase">رتبة ماسي</span>
                 </div>
             </div>
         </div>
 
         <div class="story-card">
-            <div class="relative h-72 overflow-hidden">
+            <div class="relative h-64">
                 <img src="images/health.png" class="w-full h-full object-cover" alt="Story">
-                <div class="absolute inset-0 gradient-overlay flex items-end p-5 text-white">
-                    <span class="font-bold">أم سارة - الأردن</span>
-                </div>
+                <div class="absolute inset-0 gradient-overlay flex items-end p-5 text-white font-bold">أم سارة - الأردن</div>
             </div>
-            <div class="p-6">
-                <p class="text-gray-600 text-sm leading-relaxed italic mb-4">"وجدت التوازن بين الاهتمام ببيتي وبين تحقيق دخل شهري متنامٍ بفضل نظام DXN الذكي."</p>
-                <span class="text-[10px] font-black text-gray-400">نجمة ياقوتية</span>
-            </div>
+            <div class="p-6 italic text-gray-600 text-sm">"اليوم أجني أرباحاً شهرية وأنا في منزلي وبين أبنائي."</div>
         </div>
 
         <div class="story-card">
-            <div class="relative h-72 overflow-hidden">
+            <div class="relative h-64">
                 <img src="images/project.png" class="w-full h-full object-cover" alt="Story">
-                <div class="absolute inset-0 gradient-overlay flex items-end p-5 text-white">
-                    <span class="font-bold">ليلى م. - السعودية</span>
-                </div>
+                <div class="absolute inset-0 gradient-overlay flex items-end p-5 text-white font-bold">ليلى - السعودية</div>
             </div>
-            <div class="p-6">
-                <p class="text-gray-600 text-sm leading-relaxed italic mb-4">"كنت أبحث عن مشروع لا يحتاج رأس مال كبير، ووجدت في فريق هيا الدعم والتدريب الذي أوصلني للنجاح."</p>
-                <span class="text-[10px] font-black text-gray-400">وكيل نجم</span>
-            </div>
+            <div class="p-6 italic text-gray-600 text-sm">"بدأت بميزانية بسيطة جداً، واليوم أدير فريقاً عالمياً."</div>
         </div>
 
     </main>
 
-    <section class="bg-dxn-green text-white py-16 px-6 text-center rounded-t-[60px] shadow-inner">
-        <div class="max-w-2xl mx-auto">
-            <h3 class="text-3xl font-bold mb-6 italic text-gold">ابدئي كتابة قصتكِ معنا</h3>
-            <p class="opacity-80 mb-10 text-sm leading-relaxed">انضمي لأكثر من 500 سيدة عربية حققن حلم الاستقلال المالي والصحي.</p>
-            
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://morad1971.github.io/Haya-Register/" class="bg-gold text-white px-10 py-4 rounded-2xl font-bold hover:shadow-2xl transition-all flex items-center justify-center gap-2">
-                    <i data-lucide="user-plus"></i>
-                    سجلي عضويتك المجانية
-                </a>
-            </div>
-        </div>
-    </section>
+    <div class="bottom-nav">
+        <a href="https://morad1971.github.io/Haya-DXN/" class="nav-item">
+            <i data-lucide="home"></i>
+            <span>الرئيسية</span>
+        </a>
+        <a href="https://morad1971.github.io/Haya-product-catalog/" class="nav-item">
+            <i data-lucide="layout-grid"></i>
+            <span>الكتالوج</span>
+        </a>
+        <a href="https://morad1971.github.io/Haya-Budget/" class="nav-item">
+            <i data-lucide="calculator"></i>
+            <span>الحاسبة</span>
+        </a>
+        <a href="#" class="nav-item active">
+            <i data-lucide="heart"></i>
+            <span>القصص</span>
+        </a>
+        <a href="https://morad1971.github.io/Haya-Register/" class="nav-item">
+            <i data-lucide="user-plus"></i>
+            <span>تسجيل</span>
+        </a>
+    </div>
 
     <script>
         lucide.createIcons();
