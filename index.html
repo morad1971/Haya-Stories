@@ -33,6 +33,7 @@
             transition: all 0.4s ease;
             border: 1px solid #f0f0f0;
             display: flex; flex-direction: column;
+            height: 100%;
         }
         .story-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
 
@@ -55,10 +56,18 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .nav-item { color: rgba(255,255,255,0.6); display: flex; flex-direction: column; align-items: center; font-size: 10px; gap: 4px; }
+        .nav-item { color: rgba(255,255,255,0.6); display: flex; flex-direction: column; align-items: center; font-size: 10px; gap: 4px; text-decoration: none; }
         .nav-item.active { color: var(--gold); }
         
         .gradient-overlay { background: linear-gradient(to top, rgba(27, 77, 62, 0.9), transparent); }
+        
+        .badge-video {
+            position: absolute; top: 15px; right: 15px;
+            background: var(--gold); color: white;
+            padding: 4px 12px; border-radius: 50px;
+            font-size: 10px; font-weight: bold; z-index: 10;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
@@ -72,45 +81,64 @@
     </nav>
 
     <header class="py-10 px-6 text-center">
-        <h1 class="text-4xl font-bold text-dxn-green mb-3 italic">قصص كتبت بطموح</h1>
-        <p class="text-gray-500 text-sm max-w-md mx-auto leading-relaxed">سيدات حوّلن الاستهلاك اليومي إلى مشاريع ريادية ناجحة</p>
+        <h1 class="text-4xl font-bold text-dxn-green mb-3 italic text-gold">أنتِ بطلة الحكاية</h1>
+        <p class="text-gray-500 text-sm max-w-md mx-auto leading-relaxed italic">من شغف الصحة إلى ريادة الأعمال.. استمعي لملهمات فريق هيا</p>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <main class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         
-        <div class="story-card border-2 border-gold/20">
+        <div class="story-card border-2 border-gold/30">
+            <div class="video-container relative">
+                <span class="badge-video">القائدة هدى ✨</span>
+                <video controls preload="metadata">
+                    <source src="icons/Huda.mp4" type="video/mp4">
+                </video>
+                <div class="absolute bottom-0 inset-x-0 p-4 gradient-overlay">
+                    <span class="text-white font-bold block italic">هدى طهماز</span>
+                    <span class="text-[9px] text-gold font-bold">بداية من شغف الصحة للريادة</span>
+                </div>
+            </div>
+            <div class="p-5">
+                <p class="text-gray-600 text-[11px] leading-relaxed mb-4 italic">"فنجان قهوة كان البداية لتغيير جذري.. ابحثي عن صحتك وستجدين مشروعك بانتظارك."</p>
+                <div class="flex items-center gap-1 text-gold">
+                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                    <span class="text-[10px] font-black uppercase">رائدة أعمال</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="story-card border-2 border-gold/10">
             <div class="video-container relative">
                 <video controls preload="metadata">
                     <source src="icons/Nagham.mp4" type="video/mp4">
                 </video>
-                <div class="absolute bottom-0 inset-x-0 p-5 gradient-overlay">
-                    <span class="text-white font-bold block italic">نغم - لبنان</span>
-                    <span class="text-[10px] text-gold font-bold">رحلة من الصحة إلى الريادة</span>
+                <div class="absolute bottom-0 inset-x-0 p-4 gradient-overlay">
+                    <span class="text-white font-bold block italic text-sm">نغم - لبنان</span>
                 </div>
             </div>
-            <div class="p-6">
-                <p class="text-gray-600 text-sm leading-relaxed italic mb-4">"مشروع دكسن منحني المساحة لأتعلم وأتطور وأكبر.. شاهدوا كيف تحول الاستهلاك لرسالة."</p>
-                <div class="flex items-center gap-2">
-                    <i data-lucide="award" class="w-4 h-4 text-gold"></i>
-                    <span class="text-[10px] font-black text-gray-400 uppercase">رتبة ماسي</span>
+            <div class="p-5">
+                <p class="text-gray-600 text-[11px] leading-relaxed mb-4 italic">"تحول استهلاكي لرسالة، والرسالة لمشروع ريادي منحني السفر والتطور."</p>
+                <div class="flex items-center gap-1 text-gray-400">
+                    <i data-lucide="award" class="w-3 h-3"></i>
+                    <span class="text-[10px] font-black uppercase">رتبة ماسي</span>
                 </div>
             </div>
         </div>
 
         <div class="story-card">
-            <div class="relative h-64">
-                <img src="images/health.png" class="w-full h-full object-cover" alt="Story">
-                <div class="absolute inset-0 gradient-overlay flex items-end p-5 text-white font-bold">أم سارة - الأردن</div>
+            <div class="relative h-64 overflow-hidden">
+                <img src="icons/office-interior.png" class="w-full h-full object-cover" alt="Story">
+                <div class="absolute inset-0 gradient-overlay flex items-end p-4 text-white font-bold text-sm">أم سارة - الأردن</div>
             </div>
-            <div class="p-6 italic text-gray-600 text-sm">"اليوم أجني أرباحاً شهرية وأنا في منزلي وبين أبنائي."</div>
+            <div class="p-5 italic text-gray-600 text-[11px]">"اليوم أجني أرباحاً شهرية وأنا في منزلي وبين أبنائي."</div>
         </div>
 
         <div class="story-card">
-            <div class="relative h-64">
-                <img src="images/project.png" class="w-full h-full object-cover" alt="Story">
-                <div class="absolute inset-0 gradient-overlay flex items-end p-5 text-white font-bold">ليلى - السعودية</div>
+            <div class="relative h-64 overflow-hidden">
+                <img src="icons/office-exterior.png" class="w-full h-full object-cover" alt="Story">
+                <div class="absolute inset-0 gradient-overlay flex items-end p-4 text-white font-bold text-sm">ليلى - السعودية</div>
             </div>
-            <div class="p-6 italic text-gray-600 text-sm">"بدأت بميزانية بسيطة جداً، واليوم أدير فريقاً عالمياً."</div>
+            <div class="p-5 italic text-gray-600 text-[11px]">"بدأت بميزانية بسيطة، واليوم أدير فريقاً عالمياً."</div>
         </div>
 
     </main>
